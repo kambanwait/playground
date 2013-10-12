@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Square to Round</title>
+	<style type="text/css">
+		/* setup the very basis for the document */
+		body {
+			text-align:center;
+			font-family:'Helvetica Neue';
+			font-weight: lighter;
+			font-size: 16px;
+			background: #dc4600;
+			padding-top: 50px;
+		}
+			a {
+				color: #f0f0f0;
+				text-decoration: none;
+			}
+		.container {
+			clear: both;
+			display: block;
+			margin: 0 auto;
+			width: 100%;
+			height: 9000px;
+			position: relative;
+		}
+		/* ANIMATIONS */
+		.Object, .ObjectContainer a {
+			-webkit-transition: all 0.35s ease-in-out;
+			-moz-transition: all 0.35s ease-in-out;
+			-ms-transition: all 0.35s ease-in-out;
+			-o-transition: all 0.35s ease-in-out;
+			transition: all 0.35s ease-in-out;
+		}
+		.text {
+			color: rgba(255, 255, 255, 1);
+			font-size: 6em;
+			padding-top: 30%;
+			text-align: center;
+			font-weight: lighter;
+		}
+		.loader {
+			margin: 50px auto 0;
+			position: relative;
+			width: 300px;
+			height: 300px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.loader-bg {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			border: 2px solid rgba(255, 255, 255, 0.2);
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.spiner-holder-one {
+			position: absolute;
+			top:0;
+			left:0;
+			overflow: hidden;
+			width: 50%;
+			height: 50%;
+			background: transparent;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.spiner-holder-two {
+			position: absolute;
+			top:0;
+			left:0;
+			overflow: hidden;
+			width: 100%;
+			height: 100%;
+			background: transparent;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.loader-spiner {
+			width: 200%;
+			height: 200%;
+			border-radius: 50%;
+			border: 2px solid rgba(255, 255, 255, 0.9);
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.animate-0-25-a {
+			-webkit-transform: rotate(90deg);
+			-moz-transform: rotate(90deg);
+			-o-transform: rotate(90deg);
+			-ms-transform: rotate(90deg);
+			transform: rotate(90deg);
+			-webkit-transform-origin: 100% 100%;
+			-moz-transform-origin: 100% 100%;
+			-o-transform-origin: 100% 100%;
+			-ms-transform-origin: 100% 100%;
+			transform-origin: 100% 100%;
+		}
+		.animate-0-25-b {
+			-webkit-transform: rotate(-90deg);
+			-moz-transform: rotate(-90deg);
+			-o-transform: rotate(-90deg);
+			-ms-transform: rotate(-90deg);
+			transform: rotate(-90deg);
+			-webkit-transform-origin: 100% 100%;
+			-moz-transform-origin: 100% 100%;
+			-o-transform-origin: 100% 100%;
+			-ms-transform-origin: 100% 100%;
+			transform-origin: 100% 100%;
+		}
+		.animate-25-50-a {
+			-webkit-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+			-o-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			transform: rotate(180deg);
+			-webkit-transform-origin: 100% 100%;
+			-moz-transform-origin: 100% 100%;
+			-o-transform-origin: 100% 100%;
+			-ms-transform-origin: 100% 100%;
+			transform-origin: 100% 100%;
+		}
+		.animate-25-50-b {
+			-webkit-transform: rotate(-90deg);
+			-moz-transform: rotate(-90deg);
+			-o-transform: rotate(-90deg);
+			-ms-transform: rotate(-90deg);
+			transform: rotate(-90deg);
+			-webkit-transform-origin: 100% 100%;
+			-moz-transform-origin: 100% 100%;
+			-o-transform-origin: 100% 100%;
+			-ms-transform-origin: 100% 100%;
+			transform-origin: 100% 100%;
+		}
+		.animate-50-75-a {
+			-webkit-transform: rotate(270deg);
+			-moz-transform: rotate(270deg);
+			-o-transform: rotate(270deg);
+			-ms-transform: rotate(270deg);
+			transform: rotate(270deg);
+			-webkit-transform-origin: 100% 100%;
+			-moz-transform-origin: 100% 100%;
+			-o-transform-origin: 100% 100%;
+			-ms-transform-origin: 100% 100%;
+			transform-origin: 100% 100%;
+		}
+		.animate-50-75-b {
+			-webkit-transform: rotate(-90deg);
+			-moz-transform: rotate(-90deg);
+			-o-transform: rotate(-90deg);
+			-ms-transform: rotate(-90deg);
+			transform: rotate(-90deg);
+			-webkit-transform-origin:100% 100%;
+			-moz-transform-origin:100% 100%;
+			-o-transform-origin:100% 100%;
+			-ms-transform-origin:100% 100%;
+			transform-origin:100% 100%;
+		}
+		.animate-75-100-a {
+			-webkit-transform: rotate(0deg);
+			-moz-transform: rotate(0deg);
+			-o-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+			transform: rotate(0deg);
+			-webkit-transform-origin: 100% 100%;
+			-moz-transform-origin: 100% 100%;
+			-o-transform-origin: 100% 100%;
+			-ms-transform-origin: 100% 100%;
+			transform-origin: 100% 100%;
+		}
+		.animate-75-100-b {
+			-webkit-transform: rotate(-90deg);
+			-moz-transform: rotate(-90deg);
+			-o-transform: rotate(-90deg);
+			-ms-transform: rotate(-90deg);
+			transform: rotate(-90deg);
+			-webkit-transform-origin: 100% 100%;
+			-moz-transform-origin: 100% 100%;
+			-o-transform-origin: 100% 100%;
+			-ms-transform-origin: 100% 100%;
+			transform-origin: 100% 100%;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="loader">
+			<div class="loader-bg">
+				<div class="text"></div>
+			</div>
+			<div class="spiner-holder-one animate-0-25-a">
+				<div class="spiner-holder-two animate-0-25-b">
+					<div class="loader-spiner" style=""></div>
+				</div>
+			</div>
+			<div class="spiner-holder-one animate-25-50-a">
+				<div class="spiner-holder-two animate-25-50-b">
+					<div class="loader-spiner"></div>
+				</div>
+			</div>
+			<div class="spiner-holder-one animate-50-75-a">
+				<div class="spiner-holder-two animate-50-75-b">
+					<div class="loader-spiner"></div>
+				</div>
+			</div>
+			<div class="spiner-holder-one animate-75-100-a">
+				<div class="spiner-holder-two animate-75-100-b">
+					<div class="loader-spiner"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- jQuery library (served from Google) -->
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/detectmobilebrowser.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- TOUCH EVENTS -->
+	<script src="js/jquery.tappable.js"></script>
+
+	<script>
+		function renderProgress(progress) {
+		    progress = Math.floor(progress);
+		    
+		    if(progress<25){
+		        var angle = -90 + (progress/100)*360;
+		        $(".animate-0-25-b").css("transform","rotate("+angle+"deg)");
+		    }
+		    else if(progress>=25 && progress<50){
+		        var angle = -90 + ((progress-25)/100)*360;
+		        $(".animate-0-25-b").css("transform","rotate(0deg)");
+		        $(".animate-25-50-b").css("transform","rotate("+angle+"deg)");
+		    }
+		    else if(progress>=50 && progress<75){
+		        var angle = -90 + ((progress-50)/100)*360;
+		        $(".animate-25-50-b, .animate-0-25-b").css("transform","rotate(0deg)");
+		        $(".animate-50-75-b").css("transform","rotate("+angle+"deg)");
+		    }
+		    else if(progress>=75 && progress<=100){
+		        var angle = -90 + ((progress-75)/100)*360;
+		        $(".animate-50-75-b, .animate-25-50-b, .animate-0-25-b").css("transform","rotate(0deg)");
+		        $(".animate-75-100-b").css("transform","rotate("+angle+"deg)");
+		    }
+		    if(progress==100){
+		    }
+		    $(".text").html(progress+"%");
+		}
+		  
+		function clearProgress() {
+		    $(".animate-75-100-b, .animate-50-75-b, .animate-25-50-b, .animate-0-25-b").css("transform","rotate(90deg)");
+		}
+		  
+		var i 			=0;
+		var times 		= 0;
+		
+		var interval 	= setInterval(function (){
+            i++;
+            times += 1;
+            if( times >= 100 ) {
+                // clearProgress();
+                width = '4px';
+                clearInterval(interval);
+                $('.text').animate({
+                	opacity : 0.5
+                }, 'slow');
+            	$('.loader-spiner').animate({
+            		borderLeftWidth: width,
+					borderTopWidth: width,
+					borderRightWidth: width,
+					borderBottomWidth: width
+				}, 100 );
+            }
+            renderProgress(i);
+		},60);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>text shadows</title>
+	
+	<style type="text/css">
+
+	/* setup the very basis for the document */
+	body { text-align:center; font-family:helvetica; }
+
+	/* text-shadow works by setting the offset on vertical and horizontal 
+	levels ( 1px / -1px ) for the shadow and then you set the blur level in 
+	pixels of the shadow it self ( 1px ). You then set the HEX code for the 
+	shadow color ( #000 ) */
+	body h1 {	
+		font-size:80px;
+		color:#cdcdcd;
+		text-shadow:-1px -1px 1px #000;
+		float:left;
+		margin:15px;
+	}
+	body h2 {	
+		font-size:80px;
+		color:#cdcdcd;
+		text-shadow:1px 1px 1px #000;
+		float:left;
+		margin:15px;
+	}
+	/* text-shadow works by setting the offset on vertical and horizontal 
+	levels ( 10px / 10px ) for the shadow and then you set the blur level in 
+	pixels of the shadow it self ( 10px blur ). You then set the HEX code for the 
+	shadow color ( #f00 = red ) */
+	body h3 {	
+		/* Created he red glowy shadow */
+		font-size:80px;
+		color:#cdcdcd;
+		text-shadow:10px 10px 10px #f00000;
+		float:left;
+		margin:15px;	
+	}
+	</style>
+</head>
+<body>
+	<h1> CSS3 text <br /> shadows </h1>
+	<h2> CSS3 text <br /> shadows </h2>
+	<h3> CSS3 text <br /> shadows </h3>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Square to Round</title>
+	<style type="text/css">
+		/* setup the very basis for the document */
+		body {
+			text-align:center;
+			font-family:'Helvetica Neue';
+			font-weight: lighter;
+			font-size: 16px;
+			background: #dc4600;
+			padding-top: 50px;
+		}
+			a {
+				color: #f0f0f0;
+				text-decoration: none;
+			}
+		.container {
+			clear: both;
+			display: block;
+			margin: 0 auto;
+			width: 100%;
+			height: 9000px;
+			position: relative;
+		}
+		/* ANIMATIONS */
+		.Object, .ObjectContainer a, .loader-bg {
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		.text {
+			color: rgba(255, 255, 255, 1);
+			font-size: 5em;
+			text-align: center;
+			font-weight: lighter;
+		}
+		.loader {
+			margin: 50px auto 0;
+			position: relative;
+			width: 12rem;
+			height: 12rem;
+			position: relative;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.loader-bg {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			border: 100px solid rgba(255, 255, 255, 1);
+			border-radius: 0% 0% 60% 60%;
+			box-shadow: 0 0 #000;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-ms-box-sizing: border-box;
+				box-sizing: border-box;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="loader">
+			<div class="text"></div>
+			<div class="loader-bg"></div>
+		</div>
+	</div>
+
+
+	<!-- jQuery library (served from Google) -->
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/detectmobilebrowser.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- TOUCH EVENTS -->
+	<script src="js/jquery.tappable.js"></script>
+
+	<script>
+		var i = 0,
+			j = 0,
+			k = 0,
+			l = 0;
+
+		function renderProgress(progress) {
+		    progress = Math.floor(progress);
+
+		    if(progress<20){
+		    	i++;
+		        $(".loader-bg").css('box-shadow', i+'px ' +i+'px ' + 'rgba(0,0,0,0.5)' );
+		        j = i;
+		    }
+		    else if(progress>=20 && progress<40){
+		    	j++;
+		        $(".loader-bg").css('box-shadow', '-'+j+'px ' +i+'px ' + 'rgba(0,0,0,0.5)' );
+		        k = j;
+		    }
+		    else if(progress>=40 && progress<60){
+		    	k++
+		        $(".loader-bg").css('box-shadow', '-'+k+'px ' + '-'+k+'px ' + 'rgba(0,0,0,0.5)' );
+		        l = k;
+		    }
+		    else if(progress>=60 && progress<=80){
+		    	l++;
+		        $(".loader-bg").css('box-shadow', progress+'px ' +progress+'px ' + 'rgba(0,0,0,0.5)' );
+		    }
+		    else if(progress>=80 && progress<=100){
+		        $(".loader-bg").css('box-shadow', progress+'px ' +progress+'px ' + 'rgba(0,0,0,0.5)' );
+		    }
+		    if(progress==100){ }
+		    $(".text").html(progress+"%");
+		}
+		  
+		function clearProgress() {
+		    // $(".animate-75-100-b, .animate-50-75-b, .animate-25-50-b, .animate-0-25-b").css("transform","rotate(90deg)");
+		}
+		  
+		var i 			=0;
+		var times 		= 0;
+		
+		var interval 	= setInterval(function (){
+            i++;
+            times += 1;
+            if( times >= 100 ) {
+                // clearProgress();
+                width = '4px';
+                clearInterval(interval);
+            }
+            renderProgress(i);
+		},90);
+
+	</script>
+</body>
+</html>
