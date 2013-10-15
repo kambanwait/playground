@@ -2,367 +2,332 @@
 
 /* setup the very basis for the document */
 body {
-  text-align:center;
-  font-family:'Helvetica Neue';
-  font-weight: lighter;
-  font-size: 16px;
-  background: #fa4e06;
-  padding-top: 50px;
-  letter-spacing: 2px;
+    text-align:center;
+    font-family:'Helvetica Neue';
+    font-weight: lighter;
+    font-size: 16px;
+    background: #fa4e06;
+    padding: 0;
+    letter-spacing: 2px;
+    position: relative;
 }
-  a {
-    color: #f0f0f0;
+a {
     text-decoration: none;
-  }
+}
 h1 {
-  font-size: 2.0rem;
-  line-height: 1.4;
+    font-size: 2.0rem;
+    line-height: 1.4;
 }
 p {
-  font-size: 1.4rem;
-  line-height: 1.3;
+    font-size: 1.4rem;
+    line-height: 1.3;
 }
-
-.highlight {
-  background: #fff699;
-  padding: 0 0.5em;
-}
-
-.block {
-  position: relative;
-  margin: 0 auto;
-  padding: 1.5em 1.25em;
-  max-width: 60em;
-}
-
-#top .nav-btn {
-  position: absolute;
-  top: 1.5em;
-}
-#top .nav-btn.btn2 {
-  left: auto;
-  right: 0;
-}
-
-  .nav-btn, .nav-btn.btn2 {
-    position: relative;
-    padding-left: 1.25em;
-    text-indent: 100%;
-  }
-    .nav-btn:before, .nav-btn.btn2:before {
-      -webkit-transition: all 0.1s ease-in-out;
-      -moz-transition: all 0.1s ease-in-out;
-      -ms-transition: all 0.1s ease-in-out;
-      -o-transition: all 0.1s ease-in-out;
-      transition: all 0.1s ease-in-out;
+/* CLASSES */
+    .block {
+        position: relative;
+        margin: 0 auto;
+        padding: 1.5em 1.25em;
+        max-width: 60em;
     }
-
-    .nav-btn:before, .nav-btn.btn2:before {
-      border-bottom: 7px solid #FFFFFF;
-      border-top: 20px double #FFFFFF;
-      content: "";
-      height: 6px;
-      left: 0;
-      position: absolute;
-      top: 0.25em;
-      width: 2em;
+/* LETS WRAP THINGS UP */
+    #Phone {
+        background: url("../images/iphone_transparent.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+        height: 1688px;
+        margin: 0 auto;
+        position: relative;
+        width: 100%;
     }
-    
-    .js-nav .nav-btn:before, .js-nav2 .nav-btn.btn2:before {
-      border-top: none;
-      border-bottom: 10px solid #FFFFFF;
-      line-height: 0;
-      margin: 0;
-      padding: 0;
-      text-align: left;
-      text-indent: 30%;
-      top: 0.5em;
+    #outer-wrap {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        width: 650px;
+        height: 1404px;
     }
-
-#outer-wrap {
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 480px;
-}
-
-#inner-wrap {
-  position: relative;
-  width: 100%;
-}
-
-#nav, #nav2 {
-  z-index: 200;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  color: #fff;
-}
-#nav .block-title, #nav2 .block-title {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-#nav .block, #nav2 .block {
-  z-index: 2;
-  position: relative;
-  padding: 0.75em 1.25em;
-  background: #333333;
-}
-ul {
-  *zoom: 1;
-  display: block;
-}
-ul:before, ul:after {
-  content: "";
-  display: table;
-}
-ul:after {
-  clear: both;
-}
-li {
-  display: block;
-}
-li a {
-  display: block;
-  color: #ccc;
-  font-size: 0.875em;
-  line-height: 1.28571em;
-  font-weight: bold;
-  outline: none;
-}
-li a:focus, li a:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-}
-li.is-active a {
-  color: #fff;
-}
-li {
-  position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-li:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-li.is-active:after {
-  z-index: 50;
-  display: block;
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -1.3em;
-  margin-top: -0.625em;
-  border-top: 0.625em transparent solid;
-  border-bottom: 0.625em transparent solid;
-  border-right: 0.625em white solid;
-}
-  #nav2 li.is-active:after {
-    z-index: 50;
-    display: block;
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -1.3em;
-    margin-top: -0.625em;
-    border-top: 0.625em transparent solid;
-    border-bottom: 0.625em transparent solid;
-    border-left: 0.625em white solid;
-    border-right: none;
-  }
-li a {
-  padding: 0.85714em 2.14286em;
-}
-
-#top {
-  z-index: 100;
-  position: relative;
-  color: #fff;
-  background: #333333;
-}
-#top .block-title {
-  margin: 0;
-  font-size: 1.875em;
-  line-height: 1.2em;
-  text-align: center;
-  white-space: nowrap;
-}
-#main {
-  background: #fff;
-}
-#main .block {
-  padding: 2.625em 1.875em;
-}
-
-footer[role="contentinfo"] {
-  background: #ddd;
-}
-
-
-
-  #nav, #nav2 {
-    position: absolute;
-    top: 0;
-    padding-top: 5.25em;
-  }
-  
-
-  .js-ready #nav {
-    height: 100%;
-    width: 80%;
-    background: #333333;
-    -webkit-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
-    box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
-  }
-  .js-ready #nav .block {
-    background: transparent;
-  }
-  .js-ready #nav .close-btn {
-    display: block;
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
-    opacity: 0.7;
-  }
-  .js-ready #nav .close-btn:focus, .js-ready #nav .close-btn:hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-    opacity: 1;
-  }
-
-  .js-ready #nav {
-    left: -80%;
-  }
-  .js-ready #inner-wrap {
-    left: 0;
-  }
-
-  .js-nav #inner-wrap {
-    left: 80%;
-  }
-
-  .csstransforms3d.csstransitions.js-ready #nav {
-    left: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    -moz-transform: translate3d(-100%, 0, 0);
-    -ms-transform: translate3d(-100%, 0, 0);
-    -o-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-  .csstransforms3d.csstransitions.js-ready #inner-wrap {
-    left: 0 !important;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-transition: -webkit-transform 500ms ease;
-    -moz-transition: -moz-transform 500ms ease;
-    -o-transition: -o-transform 500ms ease;
-    transition: transform 500ms ease;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-
-  .csstransforms3d.csstransitions.js-nav #inner-wrap {
-    -webkit-transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
-    -moz-transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
-    -ms-transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
-    -o-transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
-    transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
-  }
-
-    #nav2 {
-      background: #FFFFFF;
-      color: #333;
-      overflow: hidden;
-      position: absolute;
-      top: 0;
+    #inner-wrap {
+        position: relative;
+        width: 645px;
+        height: 100%;
+        margin: 265px auto 0  
     }
-    
-    #nav2 .block {
-      z-index: 2;
-      position: relative;
-      padding: 0.75em 1.25em;
-      background: #333333;
+/* MAIN PAGE */
+    /* TOP PAGE HEADER */
+    #pageHeader {
+        z-index: 100;
+        position: relative;
+        color: #fff;
+        background: #333333;
+        -webkit-box-shadow: 0 1px 0 2px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 0 1px 0 2px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 1px 0 2px rgba(0, 0, 0, 0.25);
     }
-    .js-nav2 #inner-wrap {
-      left: 80%;
+        #pageHeader .block-title {
+            margin: 0;
+            font-size: 1.875em;
+            line-height: 1.2em;
+            text-align: center;
+            white-space: nowrap;
+        }
+        #pageHeader .nav-btn {
+            position: absolute;
+            top: 1.5em;
+        }
+        #pageHeader .nav-btn.btn2 {
+            left: auto;
+            right: -10px;
+        }
+        /* PAGE */
+    #main {
+        background: #fff;
+        overflow: auto;
+        height: 100%
     }
+        #main p, #main h1 {
+            margin-bottom: 2rem;
+        }
+        #main .block {
+            padding: 2.625em 1.875em;
+        }
+/* OPEN SLIDE NAV BUTTONS */
+    .nav-btn, .nav-btn.btn2 {
+        cursor: pointer;
+        position: relative;
+        padding-left: 1.25em;
+        text-indent: 100%;
+    }
+        .nav-btn:before, .nav-btn.btn2:before {
+            border-bottom: 7px solid #FFFFFF;
+            border-top: 20px double #FFFFFF;
+            content: "";
+            height: 6px;
+            left: 0;
+            position: absolute;
+            top: 0.25em;
+            width: 2em;
+        }
+            /* OPEN SLIDER NAV BUTTON SINGLED DOWN TO ONE LINE */
+            .js-nav .nav-btn:before, .js-nav2 .nav-btn.btn2:before {
+                border-top: none;
+                border-bottom: 10px solid #FFFFFF;
+                line-height: 0;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+                text-indent: 30%;
+                top: 0.5em;
+            }
+/* SLIDING NAVIGATION PANELS */
+    #nav, #nav2 {
+        z-index: 200;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        color: #fff;
+        position: absolute;
+        top: 0;
+        padding-top: 1rem;
+        background: #FFFFFF;
+        color: #333;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+    }
+        #nav .block,
+        #nav2 .block {
+            z-index: 2;
+            position: relative;
+            padding: 0 1.25em;
+            background: #333333;
+        }
+            #nav .block-title,
+            #nav2 .block-title {
+                color: #fff;
+                width: auto;
+                font-size: 40px;
+                padding-bottom: 1.5rem;
+            }
+    .js-ready #nav,
     .js-ready #nav2 {
-      height: 100%;
-      width: 80%;
-      background: #333333;
-      -webkit-box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
-      -moz-box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
-      box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
+        height: 100%;
+        width: 80%;
+        background: #333333;
     }
+        .js-ready #nav {
+            -webkit-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
+            box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
+        }
+        .js-ready #nav2 {
+            -webkit-box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
+            box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
+        }
+    .js-ready #nav .block,
     .js-ready #nav2 .block {
-      background: transparent;
+        background: transparent;
+    }
+    .js-ready #nav {
+        left: -80%;
     }
     .js-ready #nav2 {
-      right: -160%;
+        right: -160%;
     }
-    .csstransforms3d.csstransitions.js-ready #nav2 {
-      right: -160%;
-      -webkit-transform: translate3d(-100%, 0, 0);
-      -moz-transform: translate3d(-100%, 0, 0);
-      -ms-transform: translate3d(-100%, 0, 0);
-      -o-transform: translate3d(-100%, 0, 0);
-      transform: translate3d(-100%, 0, 0);
-      -webkit-backface-visibility: hidden;
-      -moz-backface-visibility: hidden;
-      -ms-backface-visibility: hidden;
-      -o-backface-visibility: hidden;
-      backface-visibility: hidden;
+    .js-nav #inner-wrap,
+    .js-nav2 #inner-wrap {
+        left: 80%;
     }
-      .csstransforms3d.csstransitions.js-nav2 #inner-wrap {
-        -webkit-transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
-        -moz-transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
-        -ms-transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
-        -o-transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
-        transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
-      }
+    /* POSITION THE NAV PANELS */
+        .csstransforms3d.csstransitions.js-ready #nav {
+            left: 0;
+            -webkit-transform: translate3d(-100%, 0, 0);
+            -moz-transform: translate3d(-100%, 0, 0);
+            -ms-transform: translate3d(-100%, 0, 0);
+            -o-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            -o-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .csstransforms3d.csstransitions.js-ready #nav2 {
+            right: -160%;
+            -webkit-transform: translate3d(-100%, 0, 0);
+            -moz-transform: translate3d(-100%, 0, 0);
+            -ms-transform: translate3d(-100%, 0, 0);
+            -o-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            -o-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+    /* MAKE SLIDER CONTENT SLIGHT TRANSPARENT TO FADE IT IN WHEN OPENING / CLOSING */
+        .csstransforms3d.csstransitions.js-ready #nav2 .block,
+        .csstransforms3d.csstransitions.js-ready #nav .block {
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+            opacity: 0.4;
+            -webkit-transition: opacity 300ms 100ms, -webkit-transform 500ms ease;
+            -webkit-transition-delay: ease, 0s;
+            -moz-transition: opacity 300ms 100ms ease, -moz-transform 500ms ease;
+            -o-transition: opacity 300ms 100ms ease, -o-transform 500ms ease;
+            transition: opacity 300ms 100ms ease, transform 500ms ease;
+            -webkit-transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
+            -moz-transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
+            -ms-transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
+            -o-transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
+            transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
+            -webkit-transform-origin: -50% 0%;
+            -moz-transform-origin: -50% 0%;
+            -ms-transform-origin: -50% 0%;
+            -o-transform-origin: -50% 0%;
+            transform-origin: -50% 0%;
+        }
+            .csstransforms3d.csstransitions.js-nav #nav .block,
+            .csstransforms3d.csstransitions.js-nav2 #nav2 .block {
+                filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0, 0);
+                -moz-transform: translate3d(0, 0, 0);
+                -ms-transform: translate3d(0, 0, 0);
+                -o-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+    /* INNER WRAP = POSITIONING OF MAIN PAGE WITH CONTENT */
+    .js-ready #inner-wrap {
+        left: 0;
+    }
+        .csstransforms3d.csstransitions.js-ready #inner-wrap {
+            left: 0 !important;
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            -webkit-transition: -webkit-transform 500ms ease;
+            -moz-transition: -moz-transform 500ms ease;
+            -o-transition: -o-transform 500ms ease;
+            transition: transform 500ms ease;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            -o-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+            /* LEFT TO RIGHT */
+            .csstransforms3d.csstransitions.js-nav #inner-wrap {
+                -webkit-transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
+                -moz-transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
+                -ms-transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
+                -o-transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
+                transform: translate3d(80%, 0, 0) scale3d(1, 1, 1);
+            }
+            /* RIGHT TO LEFT */
+            .csstransforms3d.csstransitions.js-nav2 #inner-wrap {
+                -webkit-transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
+                -moz-transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
+                -ms-transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
+                -o-transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
+                transform: translate3d(-80%, 0, 0) scale3d(1, 1, 1);
+            }
 
-  .csstransforms3d.csstransitions.js-ready #nav2 .block,
-  .csstransforms3d.csstransitions.js-ready #nav .block {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-    opacity: 0.5;
-    -webkit-transition: opacity 300ms 100ms, -webkit-transform 500ms ease;
-    -webkit-transition-delay: ease, 0s;
-    -moz-transition: opacity 300ms 100ms ease, -moz-transform 500ms ease;
-    -o-transition: opacity 300ms 100ms ease, -o-transform 500ms ease;
-    transition: opacity 300ms 100ms ease, transform 500ms ease;
-    -webkit-transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
-    -moz-transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
-    -ms-transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
-    -o-transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
-    transform: translate3d(10%, 0, 0) scale3d(0.9, 0.9, 0.9);
-    -webkit-transform-origin: -50% 0%;
-    -moz-transform-origin: -50% 0%;
-    -ms-transform-origin: -50% 0%;
-    -o-transform-origin: -50% 0%;
-    transform-origin: -50% 0%;
-  }
-  .csstransforms3d.csstransitions.js-nav #nav .block,
-  .csstransforms3d.csstransitions.js-nav2 #nav2 .block {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
+/* LISTS INSIDE SLIDING PANELS */
+    ul {
+        *zoom: 1;
+        display: block;
+    }
+        ul:before, ul:after {
+            content: "";
+            display: table;
+        }
+    li {
+        display: block;
+        position: relative;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+        li a {
+            display: block;
+            color: #ccc;
+            font-size: 0.875em;
+            line-height: 1.28571em;
+            font-weight: bold;
+            outline: none;
+            padding: 1.5rem 0rem;
+        }
+    li a:focus, li a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+    }
+    li:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+        li.is-active a {
+            color: #fff;
+        }
+        li.is-active:after {
+            z-index: 50;
+            display: block;
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -1.3rem;
+            margin-top: -0.625em;
+            border-top: 0.625em transparent solid;
+            border-bottom: 0.625em transparent solid;
+            border-right: 0.625em white solid;
+        }
+        #nav2 li.is-active:after {
+            z-index: 50;
+            display: block;
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -1.3rem;
+            margin-top: -0.625em;
+            border-top: 0.625em transparent solid;
+            border-bottom: 0.625em transparent solid;
+            border-left: 0.625em white solid;
+            border-right: none;
+        }
+/* FIN */
