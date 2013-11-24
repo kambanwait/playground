@@ -1,22 +1,41 @@
 @charset "UTF-8";
 
 /* setup the very basis for the document */
+html {
+    height: 100%;
+    min-height: 100%;
+}
 body {
+    background: #333333;
     text-align:center;
     font-family:'Helvetica Neue';
     font-weight: lighter;
     font-size: 16px;
-    background: #fa4e06;
     padding: 0;
+    margin: 0 auto;
     letter-spacing: 2px;
     position: relative;
+    height: 100%;
+    min-height: 100%;
+    display: inline-block;
+    width: 100%;
 }
+    /* -------------- SIZE 480 to 768 ----------------- */
+        @media only screen and (min-width: 700px) {
+            body {
+                background: #fa4e06;
+            }
+        }
 a {
     text-decoration: none;
 }
 h1 {
     font-size: 2.0rem;
     line-height: 1.4;
+}
+h2 {
+    font-size: 2.0rem;
+    font-size: 20px;
 }
 p {
     font-size: 1.4rem;
@@ -31,25 +50,47 @@ p {
     }
 /* LETS WRAP THINGS UP */
     #Phone {
-        background: url("../images/iphone_transparent.png") no-repeat scroll center top rgba(0, 0, 0, 0);
-        height: 1688px;
-        margin: 0 auto;
+        background: url("../images/iphone_transparent.png") no-repeat scroll -1000px 0 / 100% auto rgba(0, 0, 0, 0);
+        display: inline-block;
         position: relative;
+        min-width: 320px;
+        max-width: 4700px;
+        margin: 0 auto;
+        height: auto;
         width: 100%;
     }
     #outer-wrap {
+        display: block;
         position: relative;
         overflow: hidden;
         margin: 0 auto;
-        width: 650px;
-        height: 1404px;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left:0;
     }
     #inner-wrap {
         position: relative;
-        width: 645px;
-        height: 100%;
-        margin: 265px auto 0  
+        width: 100%;
+        margin: 0 auto;
     }
+    /* -------------- SIZE 480 to 768 ----------------- */
+        @media only screen and (min-width: 700px) {
+            #Phone {
+                background: url("../images/iphone_transparent.png") no-repeat scroll 0 0 / 100% auto rgba(0, 0, 0, 0);
+                margin: 0 auto;
+                height: 1280px;
+                width: 610px;
+            }
+            #outer-wrap {
+                overflow-y: scroll;
+                position: absolute;
+                top: 185px;
+                left: 49px;
+                width: 518px;
+                height: 917px;
+            }
+        }
 /* MAIN PAGE */
     /* TOP PAGE HEADER */
     #pageHeader {
@@ -74,13 +115,14 @@ p {
         }
         #pageHeader .nav-btn.btn2 {
             left: auto;
-            right: -10px;
+            right: 30px;
         }
         /* PAGE */
     #main {
         background: #fff;
         overflow: auto;
-        height: 100%
+        height: 100%;
+        min-height: 70rem;
     }
         #main p, #main h1 {
             margin-bottom: 2rem;
@@ -93,7 +135,7 @@ p {
         cursor: pointer;
         position: relative;
         padding-left: 1.25em;
-        text-indent: 100%;
+        text-indent: -9999999999px;
     }
         .nav-btn:before, .nav-btn.btn2:before {
             border-bottom: 7px solid #FFFFFF;
@@ -143,13 +185,12 @@ p {
             #nav2 .block-title {
                 color: #fff;
                 width: auto;
-                font-size: 40px;
-                padding-bottom: 1.5rem;
+                padding-bottom: 2.7rem;
             }
     .js-ready #nav,
     .js-ready #nav2 {
         height: 100%;
-        width: 80%;
+        width: 81%;
         background: #333333;
     }
         .js-ready #nav {
@@ -170,7 +211,7 @@ p {
         left: -80%;
     }
     .js-ready #nav2 {
-        right: -160%;
+        right: -161%;
     }
     .js-nav #inner-wrap,
     .js-nav2 #inner-wrap {
@@ -191,7 +232,7 @@ p {
             backface-visibility: hidden;
         }
         .csstransforms3d.csstransitions.js-ready #nav2 {
-            right: -160%;
+            right: -162%;
             -webkit-transform: translate3d(-100%, 0, 0);
             -moz-transform: translate3d(-100%, 0, 0);
             -ms-transform: translate3d(-100%, 0, 0);
