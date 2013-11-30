@@ -15,15 +15,29 @@
             font-family:'Helvetica Neue';
             font-weight: lighter;
             font-size: 16px;
-            background: #dc4600;
             line-height: 1.1;
             padding: 0 0.5rem;
             color: #fff;
+            min-width: 320px;
+        }
+        body,
+        ol li .embed-container,
+        .embed-container iframe,
+        .embed-container object,
+        .embed-container embed  {
+            background: #FA4E06 !important;
         }
             a {
                 color: #f0f0f0;
                 text-decoration: none;
             }
+                a:hover p {
+                    text-decoration: underline;
+                }
+                a.external {
+                    background: red;
+                    padding: 0 5px;
+                }
             h1, h2 {
                 display: inline-block;
                 text-align: center;
@@ -41,34 +55,58 @@
             }
             p {
                 margin: 0 auto 1rem;
+                letter-spacing: 0.1rem;
             }
                 p.title {
+                    text-transform: uppercase;
                     display: inline-block;
                     text-align: center;
                     width: 100%;
                 }
+                ol li p,
+                ol li a p {
+                    font-size: 1.3rem;
+                }
             ol {
+                text-align: center;
                 list-style: none;
             }
                 ol li {
-                    border: 1px solid rgba(255,255,255,0.2);
+                    border: 1px solid rgba(255,255,255,0.5);
                     display: inline-block;
                     word-wrap:break-word;
                     padding: 0.5rem;
                     vertical-align: top;
                     margin: 1rem auto 0;
-                    min-height: 10rem;
                     overflow: hidden;   
-                    width: 48%;
+                    width: 100%;
+                    height: 100%;
                 }
-                    ol li:nth-child(odd) {
-                        margin-right: 2%;
-                    }
                 ol li a {
                     display: block;
                     height: 100%;
                     width: 100%;                    
                 }
+                    ol li .embed-container {
+                        position: relative;
+                        padding-bottom: 120%;
+                        padding-top: 30px;
+                        height: 0; overflow:
+                        hidden;
+                    }
+                        .embed-container iframe,
+                        .embed-container object,
+                        .embed-container embed {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+            ol li a img {
+                width: 100%;
+                height: auto;
+            }
         .container {
             display: inline-block;
             position: relative;
@@ -76,7 +114,6 @@
             display: block;
             clear: both;
             width: 100%;
-            min-width: 320px;
             max-width: 1024px;
         }            
         /* ANIMATION TRANSITION IF NEEDED */
@@ -86,6 +123,43 @@
             -ms-transition: all 0.35s ease-in-out;
             -o-transition: all 0.35s ease-in-out;
             transition: all 0.35s ease-in-out;
+        }
+        /* -------------- SIZE 480 to 768 ----------------- */
+        @media only screen and (min-width: 480px) {
+            #wrapper {
+                max-width: 768px;
+            }
+            ol li {
+                width: 48%;
+                min-height: 30.5rem;
+            }
+                ol li:nth-child(2n+1) {
+                    margin-right: 2%;
+                }
+        }
+        /* -------------- SIZE 768 to 1024 ----------------- */
+        @media only screen and (min-width: 768px) {
+            #wrapper {
+                max-width: 1024px;
+                padding:0 2%;
+            }
+                ol li {
+                    width: 31%;
+                    margin-right: 2%;
+                    min-height: 30rem;
+                }
+                    ol li:nth-child(3n+3) {
+                        margin-right: 0;
+                    }
+        }
+        /* -------------- SIZE 1024 AND UP ----------------- */
+        @media only screen and (min-width: 1024px) {
+            #wrapper {
+                padding:0 1%;
+            }
+        }
+        /* -------------- SIZE 1024 AND UP ----------------- */
+        @media only screen and (min-width: 1200px) {
         }
     </style>
 </head>
@@ -99,7 +173,7 @@
         <!-- INTRO -->
         <section>
             <h2>What's this page about!?</h2>
-            <p>This is going to be a collection of 'front-end' code that I've used in previous projects. Everything here will be available for download via GitHub.</p>
+            <p>This is going to be a collection of 'front-end' code that I've used in previous projects. Everything here will be available for download via <a class="external" href="https://github.com/kambanwait" target="_blank">GitHub</a>.</p>
         </section>
 
         <!-- WORKS -->
@@ -108,31 +182,65 @@
                 <li>
                     <a href="DoubleNavsliding.html">
                         <p class="title">Double Slide-out/in navigaton</p>
+                        <img src="images/doubleslidingnav.png" alt="" />
                     </a>
                 </li>
                 <li>
-                    <p class="title">Two in one button</p>
+                    <a href="twoinonebutton.html">
+                        <p class="title">Two in one button</p>
+                        <img src="images/twoinonebutton.png" alt="" />
+                    </a>
                 </li>
                 <li>
-                    <p class="title">Mini thumbnail gallery</p>
+                    <a href="ThumbGallery.html">
+                        <p class="title">Mini thumbnail gallery</p>
+                        <img src="images/thumbnailgridgallery.png" alt="" />
+                    </a>
                 </li>
                 <li>
-                    <p class="title">Expanding thumbnail grid</p>
+                    <a href="ThumbGalleryGrid.html">
+                        <p class="title">Expanding thumbnail grid</p>
+                    </a>
+                    <div class='embed-container'><iframe src='//instagram.com/p/g6ZBNqo6gi/embed/' frameborder='0' scrolling='no' allowtransparency='true'></iframe></div>
                 </li>
                 <li>
-                    <p class="title">Cirlcle pre-loader</p>
+                    <a href="circleload.html">
+                        <p class="title">Cirlcle pre-loader</p>
+                        <img src="images/CirlclePreload.png" alt="" />
+                    </a>
                 </li>
                 <li>
+                    <a href="borderradiuspreload.html">
+                        <p class="title">Border radius preload</p>
+                        <img src="images/borderradiuspreloader.png" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="drawers.html">
+                        <p class="title">CSS Drawers</p>
+                        <img src="images/drawers.png" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="checkboxes.html">
+                        <p class="title">Custom Radio/Checkboxes</p>
+                        <img src="images/customcheckbox.png" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="hiddensearch.html">
+                        <p class="title">Hidden Search Submit</p>
+                        <img src="images/hiddensearchbox.png" alt="" />
+                    </a>
+                </li>
+                <li>                    
+                    <a href="doublemenu.html">
+                        <p class="title">Double dropdown menu</p>
+                        <img src="images/doublemenu.png" alt="" />
+                    </a>
+                </li>
+                <!-- <li>
                     <p class="title">CSS Animation</p>
-                </li>
-                <li>
-                    <p class="title">CSS Drawers</p>
-                </li>
-                <li>
-                    <p class="title">Custom Radio/Checkboxes</p>
-                </li>
-                <li>
-                    <p class="title">Hidden Search Submit</p>
                 </li>
                 <li>
                     <p class="title">iOS 7 Blur</p>
@@ -141,20 +249,29 @@
                     <p class="title">Form auto-placeholder fill</p>
                 </li>
                 <li>
-                    <p class="title">Double dropdown menu</p>
-                </li>
-                <li>
                     <p class="title">Instagram feed</p>
-                </li>
+                </li> -->
                 <li>
-                    <p class="title">On hover CSS transition</p>
+                    <a href="SquareRound.html">
+                        <p class="title">On hover CSS transition</p>
+                        <img src="images/SquareRound.png" alt="" />
+                    </a>
                 </li>
                 <!-- KEEP AT BOTTOM -->
-                <li>
+                <!-- <li>
                     <p class="title">Back to top jQuery ☝</p>
-                </li>
+                </li> -->
             </ol>
         </section>
-    </articl>
+    </article>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-46021261-1', 'scriptedpixels.co.uk');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>

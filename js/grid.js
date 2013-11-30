@@ -345,13 +345,15 @@ var Grid = (function() {
 	Preview.prototype = {
 		create : function() {
 		// NEW CODE - Setup the inside of the gallery first as it gets appended insdide to relative wrappers
-			
+		// VIDEO IFRAME YOUTUBE
+			this.$iframeWrapper				 = $('<iframe src="" frameborder="0" allowfullscreen></iframe>');
+
 		// PREPARE THE LARGE GALLERY IMAGE FIRST
 			// The image itself. The SRC is set later on in the code
 			this.$fullSizeImg			 	 = $('<img src="" alt="" />');
 			// A div for the large gallery image
-			this.$fullSizeImgContainer		 = $('<div class="og-fullimg"></div>').append(this.$fullSizeImg, this.$loading );
-			
+			this.$fullSizeImgContainer		 = $('<div class="og-fullimg"></div>').append(this.$fullSizeImg, this.$loading, this.$iframeWrapper );
+
 		// PREPARE THE thumbnails
 			// Thumbnails IMG SRC first to appen later to relative wrapper
 			this.$thumbnailSrcOne			 = $('<img class="thumb" rel="" src="">');
@@ -413,19 +415,21 @@ var Grid = (function() {
 			current = this.$item.index();
 			var $itemEl = this.$item.children( 'a' ),
 				eldata = {
-					href : $itemEl.attr( 'href' ),
-					largesrc : $itemEl.data( 'largesrc' ),
-					title : $itemEl.data( 'title' ),
+					href 		: $itemEl.attr( 'href' ),
+					largesrc 	: $itemEl.data( 'largesrc' ),
+					title  		: $itemEl.data( 'title' ),
 					description : $itemEl.data( 'description' ),
-					price : $itemEl.data( 'price' ),
-					thumb1 : $itemEl.data( 'thumb-1' ),
-					thumb2 : $itemEl.data( 'thumb-2' ),
-					thumb3 : $itemEl.data( 'thumb-3' )
+					price  		: $itemEl.data( 'price' ),
+					thumb1 		: $itemEl.data( 'thumb-1' ),
+					thumb2 		: $itemEl.data( 'thumb-2' ),
+					thumb3 		: $itemEl.data( 'thumb-3' ),
+					video  		: $itemEl.data( 'video' )
 				};
 
 			this.$title.html(eldata.title);
 			this.$description.html( eldata.description );
 			this.$href.attr( 'href', eldata.href );
+			
 			// This updates the thumbnails with relative images
 			this.$thumbnailSrcOne.attr( 'src', (eldata.thumb1 ? eldata.thumb1 : ''));
 			this.$smallThumbContainerOne.attr( 'rel', (eldata.thumb1 ? eldata.thumb1 : ''));
@@ -435,6 +439,13 @@ var Grid = (function() {
 
 			this.$thumbnailSrcThree.attr( 'src', (eldata.thumb3 ? eldata.thumb3 : ''));
 			this.$smallThumbContainerThree.attr( 'rel', (eldata.thumb3 ? eldata.thumb3 : ''));
+
+			// Adds the SRC Video in
+			if( eldata.video ) {
+				this.$iframeWrapper.attr( 'src', (eldata.video ? eldata.video : '')).css('display','block');
+			} else {
+				this.$iframeWrapper.css('display','none');
+			};
 
 			var self = this;
 			

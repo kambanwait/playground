@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Scripted Pixels' Double menu</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        /* setup the very basis for the document */
+        body {
+            font-family: 'CodeLightRegular', 'Helvetica Neue';
+            text-align:center;
+            font-weight: lighter;
+            font-size: 16px;
+            line-height: 1.1;
+            padding: 0 0.5rem;
+            color: #fff;
+            min-width: 320px;
+        }
+        .container {
+            display: inline-block;
+            position: relative;
+            margin: 1rem auto 0;
+            max-width: 500px;
+            clear: both;
+            width: 100%;
+        }
+        a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+        p {
+            margin: 0 auto 1rem;
+            letter-spacing: 0.1rem;
+        }
+        #mobile_menu, #share_menu {
+            width: 49.9%;
+            min-height: 25px;
+            background: #BD2026;
+            float: left;
+            position: relative;
+            margin-bottom: 0;
+        }
+        #share_menu {
+            float: right;
+        }
+            #mobile_menu > a,
+            #share_menu > a {
+                letter-spacing: 5px;
+                padding: 12px 11px 10px;
+                padding: 1.2rem 1.1rem 1.0rem;
+                height: 100%;
+                width: auto;
+                display: block;
+            }
+            #share_menu > a {
+                text-align: right;
+            }
+                #mobile_menu .menu,
+                #share_menu .menu {
+                    padding: 1rem;
+                    background: #BD2026;
+                    position: absolute;
+                    z-index: 99999;
+                    display: none;
+                    width: 100%;
+                    top: 102%;
+                    left: 0;
+                    height: auto;
+                }
+                    #mobile_menu .menu li,
+                    #share_menu .menu li {
+                        border-bottom: 1px solid rgba(255,255,255,0.3);
+                        display: inline-block;
+                        line-height: 3rem;
+                        min-height: 10px;
+                        width: 100%;
+                    }
+                #mobile_menu .menu li:last-child,
+                #share_menu .menu li:last-child {
+                    border-bottom: none;
+                }
+    </style>
+</head>
+<body>
+
+    <article class="container">
+        <div id="mobile_menu" >
+            <a href="#" id="mobileMenuButton" >Menu</a>
+            <div id="menu">
+                <ul class="menu">
+                    <li> Item 1  </li>
+                    <li> Item 2  </li>
+                    <li> Item 3  </li>
+                    <li> Item 4  </li>
+                </ul>
+            </div>
+        </div>
+        <!-- share -->
+        <div id="share_menu" >
+            <a href="#" id="mobileShareButton" >Share</a>
+            <div id="share">
+                <ul class="menu">
+                    <li> Item 1  </li>
+                    <li> Item 2  </li>
+                    <li> Item 3  </li>
+                    <li> Item 4  </li>
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <!-- jQuery libraries -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/detectmobilebrowser.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <!-- TOUCH EVENTS -->
+        <script src="js/jquery.tappable.js"></script>
+    <script>
+        jQuery(document).ready(function($){
+            var menu        = $('#mobile_menu .menu');
+            var share       = $('#share_menu .menu');
+
+            $("#mobileMenuButton").bind('click', function(event) {
+                event.preventDefault();
+                if (share.is(":visible")) {
+                    share.slideUp( 300 );
+                };
+                if (menu.is(":visible")) {
+                    menu.slideUp(300, 'easeInOutSine', {complete:function(){
+                        $(this).css('display','');
+                        }
+                    });
+                } else {
+                    menu.slideDown(300, 'easeInOutSine');
+                };      
+            });
+            
+            $('#mobileShareButton').bind('click', function(event) {
+                event.preventDefault();
+                if (menu.is(":visible")) {
+                    menu.slideUp( 300 );
+                };
+                if (share.is(":visible")) {
+                    share.slideUp(500, 'easeInOutSine', { complete:function(){
+                        $(this).css('display','');
+                        }
+                    });
+                } else {
+                    share.slideDown(300, 'easeInOutSine');
+                };
+            });
+        });
+    </script>
+</body>
+</html>

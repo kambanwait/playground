@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Scripted Pixels' Drawers, one at a time</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        /* setup the very basis for the document */
+        body {
+            font-family: 'Helvetica Neue';
+            text-align:center;
+            font-weight: lighter;
+            font-size: 16px;
+            line-height: 1.1;
+            padding: 0 0.5rem;
+            color: #fff;
+            min-width: 320px;
+        }
+        .container {
+            display: inline-block;
+            position: relative;
+            margin: 1rem auto;
+            display: block;
+            clear: both;
+            width: 100%;
+            max-width: 500px;
+        }
+        a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+            a:hover p {
+                text-decoration: underline;
+            }
+        h1, h2, h3 {
+            font-family: 'CodeLightRegular', 'Helvetica Neue';
+        }
+        h1, h2 {
+            display: inline-block;
+            text-align: center;
+            line-height: 1.1;
+            width: 100%;
+        }
+        h1 {
+            font-size: 30px;
+            font-size: 3rem;
+        }
+        h2 {
+            font-size: 18px;
+            font-size: 1.8rem;
+            margin: 0 auto 1rem;
+        }
+        p {
+            margin: 0 auto 1rem;
+            letter-spacing: 0.1rem;
+        }
+        ol {
+            list-style: none;
+        }
+            ol li {
+                border: thin solid rgba(255,255,255,0.5);
+                padding: 1rem 1rem 0;
+                border-bottom: 0;
+                margin:0 auto;
+                cursor: pointer;
+            }
+            ol li:last-child {
+                border-bottom:  thin solid rgba(255,255,255,0.5);
+            }
+                ol li h3 {
+                    display: inline-block;
+                    letter-spacing: 1px;
+                    font-size: 1.3rem;
+                    text-align: left;
+                    width: 100%;
+                }
+                    ol li h3:after {
+                        content: '+';
+                        float: right;
+                    }
+                ol li article  {
+                    display: inline-block;
+                    overflow: hidden;
+                    margin: 1rem 0 0;
+                    width: 100%;
+                    max-height: 0px;
+                    -webkit-transition: all 0.3s ease-out;
+                    -moz-transition: all 0.3s ease-out;
+                    -o-transition: all 0.3s ease-out;
+                    -ms-transition: all 0.3s ease-out;
+                    transition: all 0.3s ease-out;
+                }
+                    ol li.open article {
+                        height: auto;
+                        max-height: 900px;
+                        -webkit-transition: all 0.4s ease-in;
+                        -moz-transition: all 0.4s ease-in;
+                        -o-transition: all 0.4s ease-in;
+                        -ms-transition: all 0.4s ease-in;
+                        transition: all 0.4s ease-in;
+                    }                            
+                    ol li.open h3:after {
+                        content: '-';
+                    }
+    </style>
+</head>
+<body>
+
+    <article class="container">
+        <section>
+            <ol>
+                <li class="open">
+                    <h3> Drawer Title </h3>
+                    <article>
+                        <p> Drawer content </p>
+                    </article>
+                </li>
+
+                <li class="">
+                    <h3 class=""> Drawer Title </h3>
+                    <article>
+                        <p> Drawer content </p>
+                    </article>
+                </li>
+
+                <li class="">
+                    <h3 class=""> Drawer Title </h3>
+                    <article>
+                        <p> Drawer content </p>
+                    </article>
+                </li>
+
+                <li class="">
+                    <h3 class=""> Drawer Title </h3>
+                    <article>
+                        <p> Drawer content </p>
+                    </article>
+                </li>
+            </ol>
+        </section>
+    </article>
+
+    <!-- jQuery libraries -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/detectmobilebrowser.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <!-- TOUCH EVENTS -->
+        <script src="js/jquery.tappable.js"></script>
+    <script>
+        jQuery(document).ready(function($){
+            $('ol li').tappable();
+            $('ol li').on('click', function(){
+                $('ol li').not(this).removeClass('open');
+                $(this).toggleClass('open');
+            });
+        });
+    </script>
+</body>
+</html>
