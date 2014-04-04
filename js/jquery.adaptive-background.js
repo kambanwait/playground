@@ -51,9 +51,13 @@
             $parent = $this.parent();
           }
 
-          $parent.children('.setColor').html(data.color).css( {Color : data.color} );
-          $parent.children('.setColor').css({ color : data.color });
-          $parent.css({ backgroundColor: data.color });
+          $parent.css({
+            background : data.color
+          }).animate({
+            opacity:1
+          }).children('.setColor').html(data.color).css({
+            color : data.color
+          });
 
         });
 

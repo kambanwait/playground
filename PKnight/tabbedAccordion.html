@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Scripted Pixels' Image gallery with Thumbnails</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <style type="text/css">
+        /* setup the very basis for the document */
+        body {
+            text-align: center;
+            font-family:'Helvetica Neue';
+            font-weight: lighter;
+            font-size: 16px;
+            background: #FFFFFF;
+            padding: 50px 0 0 0;
+            margin: 0 auto;
+            color: #7D8389;
+        }
+        body:after {
+            font-size: 100%;
+        }
+            a {
+                color: #f0f0f0;
+                text-decoration: none;
+            }
+        .container {
+            clear: both;
+            display: inline-block;
+            margin: 0 auto;
+            width: 100%;
+            min-width: 320px;
+            max-width: 1030px;
+            position: relative;
+            text-align: center;
+        }
+        /* ANIMATION TRANSITION IF NEEDED */
+            .animate {
+                -webkit-transition: all 0.6s ease-out;
+                -moz-transition: all 0.6s ease-out;
+                -ms-transition: all 0.6s ease-out;
+                -o-transition: all 0.6s ease-out;
+                transition: all 0.6s ease-out;
+            }
+        #clients {
+            display: block;
+            margin: 0 auto;
+            max-width: 95%;
+            position: relative;
+            text-align: center;
+            width: auto;
+        }
+        #clientLogos {
+            text-align: center;
+            list-style: none outside none;
+            margin: 0 auto;
+            padding: 0;
+            text-align: center;
+            width: 100%;
+        }
+        #clientLogos li {
+            margin: 10px 35px 0 25px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;            
+            overflow: hidden;            
+            height: auto;
+        }
+            #clientLogos li img {
+                cursor: pointer;
+                opacity: 0.6;
+                -webkit-transition: all 0.2s ease-out;
+                -moz-transition: all 0.2s ease-out;
+                -ms-transition: all 0.2s ease-out;
+                -o-transition: all 0.2s ease-out;
+                transition: all 0.2s ease-out;
+            }
+                #clientLogos li.open img {
+                    opacity: 1;
+                }
+        .clientDetails {
+            position: absolute;
+            display: block;
+            opacity: 0;
+            margin: 0;
+            top: auto;
+            left: 0;            
+        }
+            .clientDetails > div {
+                border-top: 1px solid #BFE9F6;
+                background: #F5FDFF;
+                position: relative;
+                padding: 30px;
+            }
+                .clientDetails .closePreview {
+                    position: absolute;
+                    text-align: right;
+                    font-size: 30px;
+                    cursor: pointer;
+                    width: 15px;
+                    right: 10%;
+                    top: 10%;                    
+                }
+                .clientDetails > div h3 {
+                    margin-bottom: 10px;
+                    font-weight: 400;
+                    font-size: 20px;
+                }
+                .clientDetails > div p {
+                    font-size: 18px;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div id="clients">
+            <ul id="clientLogos">
+                <li >
+                    <img src="images/logo-customer-lv.png" rel="liverpoolVictoria" class="logo" data-description="iJento has been key to how we’ve grown our business. Whether the data originates from traditional computers or mobile devices, the solution has been invaluable to our continued development and progress. This is another added line to see how it acts with more data in the 1st item. The second item contains a little less info" data-title="Financial Services" />
+                </li>
+                <li>
+                    <img src="images/logo-customer-cox.png" rel="coxMedia" class="logo" data-description="CMG isn’t interested in segmenting customers into generic groups; we want to understand each individual’s journey, how they interact with us across multiple channels and what we can do to make their experience better." data-title="Media &amp; Publishing" />
+                </li>
+                <li>
+                    <img src="images/logo-customer-logitech.png" rel="logitech" class="logo" data-description="Leveraging a consolidated view of the full customer journey…helps us both answer hard business questions related to marketing optimization and customer lifetime value.Leveraging a consolidated view of the full customer journey…helps us both answer hard business questions related to marketing optimization and customer lifetime value.Leveraging a consolidated view of the full customer journey…helps us both answer hard business questions related to marketing optimization and customer lifetime value.Leveraging a consolidated view of the full customer journey…helps us both answer hard business questions related to marketing optimization and customer lifetime value." data-title="Retail" />
+                </li>
+                <li>
+                    <img src="images/logo-customer-cheapflights.png" rel="cheapFlights" class="logo" data-description="We have made more progress with our customer intelligence in the last 5 months with iJento than in the previous 18 months." data-title="Travel" />
+                </li>
+            </ul>
+        </div>
+
+    </div> <!-- container -->
+
+    <!-- jQuery libraries -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+
+    <!-- Let's do stuff when the Doc is ready, shall we -->
+    <script>
+        /*
+        * debouncedresize: special jQuery event that happens once after a window resize
+        *
+        * latest version and complete README available on Github:
+        * https://github.com/louisremi/jquery-smartresize/blob/master/jquery.debouncedresize.js
+        *
+        * Copyright 2011 @louis_remi
+        * Licensed under the MIT license.
+        */
+        var $event = $.event,
+        $special,
+        resizeTimeout;
+
+        $special = $event.special.debouncedresize = {
+            setup: function() {
+                $( this ).on( "resize", $special.handler );
+            },
+            teardown: function() {
+                $( this ).off( "resize", $special.handler );
+            },
+            handler: function( event, execAsap ) {
+                // Save the context
+                var context = this,
+                    args = arguments,
+                    dispatch = function() {
+                        // set correct event type
+                        event.type = "debouncedresize";
+                        $event.dispatch.apply( context, args );
+                    };
+
+                if ( resizeTimeout ) {
+                    clearTimeout( resizeTimeout );
+                }
+
+                execAsap ?
+                    dispatch() :
+                    resizeTimeout = setTimeout( dispatch, $special.threshold );
+            },
+            threshold: 250
+        };
+
+        // saves the item´s offset top
+        function saveItemInfo() {
+            $('#clientLogos li').each( function() {
+                var $item = $(this);
+                $item.data( 'offsetTop', $item.offset().top );
+                // console.debug( $(this).data('offsetTop') )
+            });
+        }
+
+        $(document).ready(function(){
+
+            // on page load and window resize get offsetTop of each logo
+            // save item´s size and offset
+            saveItemInfo();
+            // on window resize get the window´s size again
+            $(window).on( 'debouncedresize', function() {
+                previewPos = -1;
+                // save item´s offset
+                saveItemInfo();
+            });
+
+            var currentPosition = '';
+
+            var closeMe = function () {
+                $('#clientLogos li').removeClass('open')
+                    .stop().animate({
+                        minHeight : 0
+                    },'fast')
+                    .children('.clientDetails')
+                    .fadeOut()
+                    .remove();
+            };
+
+            var hoverOrClick = function () {
+                currentPosition = $(this).parent('li').data('offsetTop');
+            // console.debug(currentPosition);
+
+                // if the parent of the clicked logo DOESN'T have a class of open then continute
+                if ( !$(this).parent('li').hasClass('open') ) {
+
+                    // get the current height of the logo list element
+                    var currentHeight   = $(this).parent('li').height();
+                    // get the clients name
+                    var client          = $(this).attr('rel');
+                    // get the title & descriotion needed for the preview area
+                    var title           = $(this).attr('data-title');
+                    var description     = $(this).attr('data-description');
+                    // create a div element and pass in the title & description
+                    var divWithInfo     = '<div class="clientDetails"><div><span class="closePreview">X</span><h3>'+title+'</h3><p>'+description+'</p></div></div>';
+
+                    // remove the class from other li's just incase
+                    $('#clientLogos li').removeClass('open');
+
+                    // if details are visible on another logo
+                    // and the offset isn't the same as the clicked logo
+                    // close and remove the other details
+                    if ( $('li > div').is(':visible') ) {
+                        // for each div that's open with details I get the offset
+                        $('li > div').each(function( index ){
+                            // store the offset of open div
+                            var closingOffset = $(this).parent('li').data('offsetTop');
+
+                            // if they're not the same then we need to close and remove the open details
+                            if ( currentPosition != closingOffset ) {
+                                $('#clientLogos li').stop().animate({
+                                    minHeight : 0
+                                }).children('.clientDetails').css('minHeight',0).remove();
+                            } else {
+                                $('#clientLogos li').animate({
+                                    minHeight : 0
+                                }).children('.clientDetails').remove();
+                            }
+                        });
+                    };
+
+                    // insert the div after the logo within the LI
+                    $(divWithInfo).insertAfter(this).animate({
+                        opacity : 1
+                    });
+                    // now set the height of the LI to show the details :)
+                    var setHeight = ($('.clientDetails').height()) + currentHeight;
+                    // tell the LI to open to show the details after a height is set.
+                    // must be after a height is set
+                    $(this).parent('li').stop().animate({
+                        minHeight : setHeight
+                    }).addClass('open');
+                
+                } else if ($(this).parent('li').hasClass('open')) {
+                    closeMe();
+                };
+            };
+            // Assigns a click listener to all dom elements with a class of .logo
+            // This adds the onhover event to the logos
+            // $(".logo").click(hoverOrClick).hover(hoverOrClick);
+            
+            // The click event to open the logos
+            $(".logo").click(hoverOrClick);
+
+            // Add the click to close event after use has entered the client details box
+            $(document).on('click', '.closePreview', function(){
+                closeMe();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,17 +3,6 @@
 	URL - http://meyerweb.com/eric/tools/css/reset/
 	License - PUBLIC DOMAIN
 */
-/* CUSTOM FONT - CODE LIGHT */
-@font-face {
-    font-family: 'CodeLightRegular';
-    src: url('font/code_light-webfont.eot');
-    src: url('font/code_light-webfont.eot?#iefix') format('embedded-opentype'),
-        url('font/code_light-webfont.woff') format('woff'),
-        url('font/code_light-webfont.ttf') format('truetype'),
-        url('font/code_light-webfont.svg#CodeLightRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 /* Reset */
 a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, caption, canvas, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, form, footer, header, hgroup, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav,object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, tt, table, tbody, textarea, tfoot, thead, time, tr, th, td, u, ul, var, video {
 	font-family: inherit;

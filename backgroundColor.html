@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>Scripted Pixels' Image gallery with Thumbnails</title>
+	<title>Scripted Pixels' Adaptive Background Colors</title>
 
 	<link rel="stylesheet" href="css/reset.css">
 	<style type="text/css">
@@ -52,6 +52,13 @@
 		  width: 100%;
 		  float: left;
 		  margin: 0;
+		  opacity: 0;
+
+		  -webkit-transition: all 0.35s ease-in-out;
+		  -moz-transition: all 0.35s ease-in-out;
+		  -ms-transition: all 0.35s ease-in-out;
+		  -o-transition: all 0.35s ease-in-out;
+		  transition: all 0.35s ease-in-out;
 		}
 		.img-wrap img{
 		  height: 100%;
@@ -133,7 +140,7 @@
 
 	<!-- Let's do stuff when the Doc is ready, shall we -->
 	<script>
-		$(document).ready(function(){
+		$(window).load(function(){
 			$.adaptiveBackground.run();
 		});
 	</script>
