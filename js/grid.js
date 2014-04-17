@@ -262,7 +262,7 @@ var Grid = (function() {
 			saveItemInfo();
 			getWinSize();
 			var preview = $.data( this, 'preview' );
-			if( typeof preview != 'undefined' ) {
+			if( typeof preview !== 'undefined' ) {
 				hidePreview();
 			}
 
@@ -274,7 +274,8 @@ var Grid = (function() {
 		$items.on( 'click', 'span.og-close', function() {
 			hidePreview();
 			return false;
-		} ).children( 'a' ).on( 'click', function(e) {
+		} ).children( 'a' ).on( 'click', function() {
+		// } ).children( 'a' ).on( 'click', function(e) {
 
 			var $item = $( this ).parent();
 			// check if item already opened
@@ -297,7 +298,7 @@ var Grid = (function() {
 		scrollExtra = 0;
 
 		// if a preview exists and previewPos is different (different row) from item´s top then close it
-		if( typeof preview != 'undefined' ) {
+		if( typeof preview !== 'undefined' ) {
 
 			// not in the same row
 			if( previewPos !== position ) {
@@ -346,48 +347,48 @@ var Grid = (function() {
 		create : function() {
 		// NEW CODE - Setup the inside of the gallery first as it gets appended insdide to relative wrappers
 		// VIDEO IFRAME YOUTUBE
-			this.$iframeWrapper				 = $('<iframe src="" frameborder="0" allowfullscreen></iframe>');
-
-		// PREPARE THE LARGE GALLERY IMAGE FIRST
+			this.$iframeWrapper = $('<iframe src="" frameborder="0" allowfullscreen></iframe>');
+			
+			// PREPARE THE LARGE GALLERY IMAGE FIRST
 			// The image itself. The SRC is set later on in the code
-			this.$fullSizeImg			 	 = $('<img src="" alt="" />');
+			this.$fullSizeImg = $('<img src="" alt="" />');
 			// A div for the large gallery image
-			this.$fullSizeImgContainer		 = $('<div class="og-fullimg"></div>').append(this.$fullSizeImg, this.$loading, this.$iframeWrapper );
-
-		// PREPARE THE thumbnails
+			this.$fullSizeImgContainer = $('<div class="og-fullimg"></div>').append(this.$fullSizeImg, this.$loading, this.$iframeWrapper );
+			
+			// PREPARE THE thumbnails
 			// Thumbnails IMG SRC first to appen later to relative wrapper
-			this.$thumbnailSrcOne			 = $('<img class="thumb" rel="" src="">');
-			this.$thumbnailSrcTwo			 = $('<img class="thumb" rel="" src="">');
-			this.$thumbnailSrcThree			 = $('<img class="thumb" rel="" src="">');
+			this.$thumbnailSrcOne   = $('<img class="thumb" rel="" src="">');
+			this.$thumbnailSrcTwo   = $('<img class="thumb" rel="" src="">');
+			this.$thumbnailSrcThree = $('<img class="thumb" rel="" src="">');
 			// Anchor tag for thumbnail 1
-			this.$smallThumbContainerOne	 = $('<a class="SmallImage" href="#"></a>').append( this.$thumbnailSrcOne );
+			this.$smallThumbContainerOne = $('<a class="SmallImage" href="#"></a>').append( this.$thumbnailSrcOne );
 			// Anchor tag for thumbnail 2
-			this.$smallThumbContainerTwo	 = $('<a class="SmallImage" href="#"></a>').append( this.$thumbnailSrcTwo );
+			this.$smallThumbContainerTwo = $('<a class="SmallImage" href="#"></a>').append( this.$thumbnailSrcTwo );
 			// Anchor tag for thumbnail 3
-			this.$smallThumbContainerThree	 = $('<a class="SmallImage" href="#"></a>').append( this.$thumbnailSrcThree );
-
-		// WRAP UP THE LARGE IMAGES AND THE THUMBNAILS
+			this.$smallThumbContainerThree = $('<a class="SmallImage" href="#"></a>').append( this.$thumbnailSrcThree );
+			
+			// WRAP UP THE LARGE IMAGES AND THE THUMBNAILS
 			// A div to wrap the large image above
 			this.$largePreviewImageContainer = $('<div class="LargePreviewImageContainer"></div>').append(this.$fullSizeImgContainer);
-
+			
 			// A div to wrap the thumbnails
-			this.$smallPreviewContainer 	 = $('<div class="SmallPreviewImageContainer"></div>').append(this.$smallThumbContainerOne, this.$smallThumbContainerTwo, this.$smallThumbContainerThree);
-
+			this.$smallPreviewContainer = $('<div class="SmallPreviewImageContainer"></div>').append(this.$smallThumbContainerOne, this.$smallThumbContainerTwo, this.$smallThumbContainerThree);
+			
 			// A div to wrap everything up
-			this.$previewLargeContainer 	 = $('<div class="PreviewImageContainer"> </div>').append( this.$largePreviewImageContainer, this.$smallPreviewContainer );
+			this.$previewLargeContainer = $('<div class="PreviewImageContainer"> </div>').append( this.$largePreviewImageContainer, this.$smallPreviewContainer );
 
 			// create Preview structure:
-			this.$title 					 = $( '<h3></h3>' );
-			this.$description 				 = $( '<p></p>' );
-			this.$href 						 = $( '<a href="http://www.scriptedpixels.co.uk">Visit website</a>' );
-			this.$details 					 = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
-			this.$loading 					 = $( '<div class="og-loading"></div>' );
-			this.$closePreview 				 = $( '<span class="og-close"></span>' );
+			this.$title        = $( '<h3></h3>' );
+			this.$description  = $( '<p></p>' );
+			this.$href         = $( '<a href="http://www.scriptedpixels.co.uk">Visit website</a>' );
+			this.$details      = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
+			this.$loading      = $( '<div class="og-loading"></div>' );
+			this.$closePreview = $( '<span class="og-close"></span>' );
 			
 			// append all the new stuff in to the preview window
-			this.$previewInner 				 = $( '<div class="og-expander-inner"></div>' ).append( this.$previewLargeContainer, this.$closePreview, this.$details );
+			this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$previewLargeContainer, this.$closePreview, this.$details );
 			
-			this.$previewEl 				 = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
+			this.$previewEl    = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
 			
 			// append preview element to the item
 			this.$item.append( this.getEl() );
@@ -415,15 +416,15 @@ var Grid = (function() {
 			current = this.$item.index();
 			var $itemEl = this.$item.children( 'a' ),
 				eldata = {
-					href 		: $itemEl.attr( 'href' ),
-					largesrc 	: $itemEl.data( 'largesrc' ),
-					title  		: $itemEl.data( 'title' ),
-					description : $itemEl.data( 'description' ),
-					price  		: $itemEl.data( 'price' ),
-					thumb1 		: $itemEl.data( 'thumb-1' ),
-					thumb2 		: $itemEl.data( 'thumb-2' ),
-					thumb3 		: $itemEl.data( 'thumb-3' ),
-					video  		: $itemEl.data( 'video' )
+					href : $itemEl.attr('href'),
+					largesrc : $itemEl.data('largesrc'),
+					title : $itemEl.data('title'),
+					description : $itemEl.data('description'),
+					price : $itemEl.data('price'),
+					thumb1 : $itemEl.data('thumb-1'),
+					thumb2  : $itemEl.data('thumb-2'),
+					thumb3 : $itemEl.data('thumb-3'),
+					video : $itemEl.data('video')
 				};
 
 			this.$title.html(eldata.title);
@@ -445,12 +446,12 @@ var Grid = (function() {
 				this.$iframeWrapper.attr( 'src', (eldata.video ? eldata.video : '')).css('display','block');
 			} else {
 				this.$iframeWrapper.css('display','none');
-			};
+			}
 
 			var self = this;
 			
 			// remove the current image in the preview
-			if( typeof self.$largeImg != 'undefined' ) {
+			if( typeof self.$largeImg !== 'undefined' ) {
 				self.$largeImg.remove();
 			}
 
@@ -466,7 +467,7 @@ var Grid = (function() {
 						self.$largeImg = $img.fadeIn( 350 );
 						self.$fullSizeImgContainer.append( self.$largeImg );
 					}
-				} ).attr( 'src', eldata.largesrc );	
+				} ).attr( 'src', eldata.largesrc );
 			}
 
 			this.PreviewGallery();
@@ -474,7 +475,7 @@ var Grid = (function() {
 		},
 		open : function() {
 
-			setTimeout( $.proxy( function() {	
+			setTimeout( $.proxy( function() {
 				// set the height for the preview and the item
 				this.setHeights();
 				// scroll to position the preview in the right place
@@ -576,9 +577,9 @@ var Grid = (function() {
 				return false;
 			});
 		}
-	}
+	};
 
-	return { 
+	return {
 		init : init,
 		addItems : addItems
 	};

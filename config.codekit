@@ -649,7 +649,7 @@
 	"\/js\/grid.js": {
 		"fileType": 64,
 		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/grid.js",
 		"outputAbbreviatedPath": "\/js\/min\/grid-ck.js",
 		"outputPathIsOutsideProject": 0,
