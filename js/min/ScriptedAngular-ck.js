@@ -1,0 +1,1 @@
+function FirstCtrl(r,t){r.data=t}function SecondCtrl(r,t){r.data=t}var myApp=angular.module("myApp",[]);myApp.factory("Data",function(){return{message:"I'm data from a service"}}),myApp.filter("reverse",function(){return function(r){return r.split("").reverse().join("")}});

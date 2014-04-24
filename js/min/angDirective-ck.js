@@ -1,0 +1,1 @@
+var myApp=angular.module("superhero",[]);myApp.directive("superman",function(){return{restrict:"A",link:function(){alert("superman")}}}),myApp.directive("flash",function(){return{restrict:"A",link:function(){alert("flash")}}});

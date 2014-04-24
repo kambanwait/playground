@@ -1,0 +1,1 @@
+var myApp=angular.module("behaviourApp",[]);myApp.directive("enter",function(){return function(e,n,r){n.bind("mouseenter",function(){n.addClass(r.enter)})}}),myApp.directive("leave",function(){return function(e,n,r){n.bind("mouseleave",function(){n.removeClass(r.enter)})}});

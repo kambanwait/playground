@@ -39,7 +39,7 @@
 			-o-transition: all 0.35s ease-out;
 			transition: all 0.35s ease-out;
 		}
-		.SlidingDown {
+		.slidingDown {
 			width: 100%;
 			min-height: 70px;
 			display: block;
@@ -47,7 +47,7 @@
 			overflow: hidden;
 			border: 1px solid rgba(255, 255, 255,1);
 		}
-			.SlidingDown:first-child {
+			.slidingDown:first-child {
 				border-bottom: none;
 			}
 			.content {
@@ -127,7 +127,7 @@
 <body>
 	<div class="container">
 		<!-- draw 1 -->
-		<div class="SlidingDown">
+		<div class="slidingDown">
 			<div class="buttonWrap">
 				<h3>Click Me &rarr;</h3>
 				<div class="button"><span class="animate">&#43;</span></div>
@@ -137,7 +137,7 @@
 			</div>
 		</div>
 		<!-- draw 2 -->
-		<div class="SlidingDown">
+		<div class="slidingDown">
 			<div class="buttonWrap">
 				<h3>Click Me &rarr;</h3>
 				<div class="button"><span class="animate">&#43;</span></div>
@@ -156,7 +156,7 @@
 	<script src="js/jquery.tappable.js"></script>
 
 	<script>
-		$(".SlidingDown").click(function() {
+		$(".slidingDown").click(function() {
 			var button 	= $(this).find('.button');
 			var content = $(this).find('.content.animate');
 
