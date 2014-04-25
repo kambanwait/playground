@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Scripted Pixels' Playground: Sass snippets</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/responsivegrid.css">    
+    <link rel="stylesheet" href="css/sass.css">
+
+    <style type="text/css">
+        /* setup the very basis for the document */
+        body {
+            text-align:center;
+            font-family:'Helvetica Neue';
+            font-weight: lighter;
+            font-size: 16px;
+            line-height: 1.1;
+            padding: 0 0.5rem;
+            color: #fff;
+            min-width: 320px;
+            background: #ccc;
+            counter-reset:section;
+        }
+        a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+        h1, h2 {
+            display: inline-block;
+            text-align: center;
+            line-height: 1.1;
+            width: 100%;
+        }
+        h1 {
+            font-size: 35px;
+            font-size: 3.5rem;
+            margin: 10px auto 20px;
+        }
+        h2 {
+            font-size: 26px;
+            font-size: 2.6rem;
+            margin: 0 auto 1rem;
+            text-align: left;
+        }
+            h2:before {
+                counter-increment:section;
+                content:counter(section) ". ";
+            }
+        p {
+            font-size: 16px;
+            font-size: 1.6rem;
+            margin: 0 auto 1rem;
+            letter-spacing: 0.1rem;
+        }
+        .container {
+            display: inline-block;
+            position: relative;
+            margin: 1rem auto;
+            display: block;
+            clear: both;
+            width: 100%;
+            max-width: 1024px;
+        }
+            section.col {
+                background-color: transparent;
+                margin-bottom: 35px;
+                padding: 0 0 20px;
+            }
+            section:nth-child(even) {
+                margin-left: 0;
+            }
+            code {
+                font-size: 13px;
+                font-size: 1.3rem;
+                margin: 20px auto;
+                padding: 0 20px 20px;
+                display: block;
+                background: #48474c;
+                line-height: 1.5;
+                font-family: monospace;
+                font-weight: normal;
+                -moz-border-radius: 0.2em;
+                -webkit-border-radius: 0.2em;
+                border-radius: 0.2em; /* just in case */
+                white-space: pre-line;
+            }
+    </style>
+
+    </head>
+    <body>
+        <div class="container row">
+            <h1>Sass snippets</h1>
+            <section class="col span_12">
+                <h2>Interpolation</h2>
+                
+                <p>How interpolation can help with class names for coloured areas. This will place in the color namein brackets as the color for the text as well as the name for the class.</p>
+
+                <code>
+                    /* Interpolation */
+                    @mixin color_class($color) {
+                    .#{$color} { color: $color; background-image: url('images/#{$color}.jpg'); }
+                    }
+
+                    @include color_class(red);
+                    @include color_class(black);
+                </code>
+
+                <p>CSS:</p>
+                <code>
+                    /* Interpolation */
+                    .red { color: red; background-image: url("images/red.jpg"); }
+
+                    black { color: black; background-image: url("images/black.jpg"); }
+                </code>
+            </section>
+
+            <section class="col span_12">
+                <h2>Using if / else </h2>
+                
+                <p>Introducing if / else in to your CSS; If the color is 'something' then do something...</p>
+                
+                <code>
+                    /* if / else */
+                    $time : morning;
+
+                    @if $time == morning {
+                        a {
+                            color : red;
+                        }
+                    } @else if time == afternoon {
+                        a {
+                            color : blue;
+                        }
+                    } @else {
+                        a {
+                            color: gray;
+                        }
+                    }
+                </code>
+
+                <p>CSS:</p>
+                <code>
+                    /* if / else */
+                    a {
+                        color: red;
+                    }
+                </code>
+            </section>
+
+            <section class="col span_12">
+                <h2>@for and @each loops</h2>
+                <p> </p>
+                <code>
+                    /* Loops with @for and @each */
+                    .box {
+                        width: 100%;
+                        height: 10px;
+                    }
+
+                    @for $i from 1 through 5 {
+                        .box:nth-child(#{$i}) {
+                            background: darken(white, $i);
+                        }
+                    }
+
+                    @each $person in tom, john, colin, joan {
+                        .person.#{$person} {
+                            background: url('images/#{$person}.jpg');
+                        }
+                    }
+                </code>
+
+                <p>CSS:</p>
+                <code>
+                    /* Loops with @for and @each */
+                    .box {
+                        width: 100%;
+                        height: 10px;
+                    }
+
+                    /* for loop */
+                    .box:nth-child(1) {
+                        background: #fcfcfc;
+                    }
+
+                    .box:nth-child(2) {
+                        background: #fafafa;
+                    }
+
+                    .box:nth-child(3) {
+                        background: #f7f7f7;
+                    }
+
+                    .box:nth-child(4) {
+                        background: whitesmoke;
+                    }
+
+                    .box:nth-child(5) {
+                        background: #f2f2f2;
+                    }
+
+                    /* each loop */
+                    .person.tom {
+                        background: url("images/tom.jpg");
+                    }
+
+                    .person.john {
+                        background: url("images/john.jpg");
+                    }
+
+                    .person.colin {
+                        background: url("images/colin.jpg");
+                    }
+
+                    .person.joan {
+                        background: url("images/joan.jpg");
+                    }
+                </code>
+            </section>
+
+            <section class="col span_12">
+                <h2>Advanced mixins</h2>
+                <p>Taking it one step further; introducing advanced mixins where we can pass in varialbes with defaults.</p>
+
+                <code>
+                    /* Advanced mixin */
+                    @mixin band( $name : bandNameDefault, $members...) {
+                        @each $member in $members {
+                            .#{$name}.#{$member} {
+                                background: url('images/#{$name}/#{$member}.jpg');
+                            }
+                        }
+                    }
+
+                    @include band(radiohead, tom, johnny, colin, phil);
+                    @include band(nin, trent);
+
+                    /* advanced mixins defaults */
+                    @mixin defaults( $size: 10px, $color: purple, $display: block ) {
+                        width: $size;
+                        color: $color;
+                        display: $display;
+                    }
+
+                    .defaults {
+                        @include defaults;
+                    }
+                </code>
+
+                <p>CSS:</p>
+                <code>
+                    /* Advanced mixin */
+                    .radiohead.tom {
+                        background: url("images/radiohead/tom.jpg");
+                    }
+
+                    .radiohead.johnny {
+                        background: url("images/radiohead/johnny.jpg");
+                    }
+
+                    .radiohead.colin {
+                        background: url("images/radiohead/colin.jpg");
+                    }
+
+                    .radiohead.phil {
+                        background: url("images/radiohead/phil.jpg");
+                    }
+
+                    .nin.trent {
+                        background: url("images/nin/trent.jpg");
+                    }
+
+                    /* advanced mixins defaults */
+                    .defaults {
+                        width: 10px;
+                        color: purple;
+                        display: block;
+                    }
+
+                </code>
+            </section>
+
+
+        </div>
+    </body>
+
+</html>

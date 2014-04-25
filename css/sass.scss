@@ -1,0 +1,68 @@
+/* Interpolation */
+@mixin color_class($color) {
+    .#{$color} {
+        color: $color;
+        background-image: url('images/#{$color}.jpg');
+    }
+}
+
+@include color_class(red);
+@include color_class(black);
+
+/* if / else */
+$time : morning;
+
+@if $time == morning {
+    a {
+        color : red;
+    }
+} @else if time == afternoon {
+    a {
+        color : blue;
+    }
+} @else {
+    a {
+        color: gray;
+    }
+}
+
+/* Loops with @for and @each */
+.box {
+    width: 100%;
+    height: 10px;
+}
+
+@for $i from 1 through 10 {
+    .box:nth-child(#{$i}) {
+        background: darken(white, $i);
+    }
+}
+
+@each $person in tom, john, colin, joan {
+    .person.#{$person} {
+        background: url('images/#{$person}.jpg');
+    }
+}
+
+/* Advanced mixin */
+@mixin band( $name, $members...) {
+    @each $member in $members {
+        .#{$name}.#{$member} {
+            background: url('images/#{$name}/#{$member}.jpg');
+        }
+    }
+}
+
+@include band(radiohead, tom, johnny, colin, phil);
+@include band(nin, trent);
+
+/* advanced mixins defaults */
+@mixin defaults( $size: 10px, $color: purple, $display: block ) {
+    width: $size;
+    color: $color;
+    display: $display;
+}
+
+.defaults {
+    @include defaults;
+}
