@@ -72,6 +72,7 @@
             }
             section:nth-child(even) {
                 margin-left: 0;
+                clear: left;
             }
             code {
                 font-size: 13px;
@@ -79,7 +80,8 @@
                 margin: 20px auto;
                 padding: 0 20px 20px;
                 display: block;
-                background: #48474c;
+                background: rgba(56,55,59,0.8);
+                border: 1px solid rgba(56,55,59,1);
                 line-height: 1.5;
                 font-family: monospace;
                 font-weight: normal;
@@ -283,6 +285,35 @@
 
                 </code>
             </section>
+
+            <section class="col span_12">
+                <h2>Vendor prefixing</h2>
+                <p>Thanks to David Walsh for sharing this</p>
+
+                <code> 
+                    @mixin vendorize($property, $value) {
+                        -webkit-#{$property}: $value;
+                        -moz-#{$property}: $value;
+                        -ms-#{$property}: $value;
+                        -o-#{$property}: $value;
+                        #{$property}: $value;
+                    }
+                </code>
+            </section>
+            
+            <section class="col span_12">
+                <h2>:hover, :active and :focus styling</h2>
+                <p>Thanks to David Wash, again, for sharing.</p>
+
+                <code>
+                    @mixin hoverActiveFocus($property, $value) {
+                        &:hover, &:active, &:focus {
+                            #{$property}: $value;
+                        }
+                    }
+                </code>
+            </section>
+
 
 
         </div>
