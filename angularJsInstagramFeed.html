@@ -140,7 +140,7 @@
         /*-------------------------
             Grid layout
         --------------------------*/
-        ul.grid{
+        ul.grid {
             list-style: none;
             width: 100%;
             margin: 0 auto;
@@ -153,9 +153,29 @@
                 border:none;
                 z-index: 10;
             }
-            ul.grid li p {
-                display: none;
-            }
+                ul.grid li p {
+                    position: absolute;
+                    bottom: -100%;
+                    opacity: 0;
+                    z-index: 99;
+                    width: 100%;
+                    left: 0;
+                    background: rgba(255,255,255,0.8);
+                    font-weight: 200;
+                    padding: 10px 10px 20px;
+                    text-align: center;
+                    color: #000;
+                    -webkit-transition: all 0.35s ease-in-out;
+                    -moz-transition: all 0.35s ease-in-out;
+                    -ms-transition: all 0.35s ease-in-out;
+                    -o-transition: all 0.35s ease-in-out;
+                    transition: all 0.35s ease-in-out;
+                }
+                    ul.grid li:hover p {
+                        bottom: 0;
+                        opacity: 1;
+                        left: 0;
+                    }
         
         ul.list li.col {
             margin-left: 0;
@@ -167,13 +187,13 @@
         ul.list li,
         ul.grid li {
             background: none;
+            overflow: hidden;
         }
         ul.list li,
         ul.grid li {
             position: relative;
             margin-bottom: 20px;
             background: none;
-            padding: 2px;
             float:left;
             z-index: 0;
         }
@@ -318,7 +338,7 @@
         function SwitchableGridController($scope, instagram){
             // Default layout of the app. Clicking the buttons in the toolbar
             // changes this value.
-            $scope.layout = 'list';
+            $scope.layout = 'grid';
             $scope.pics = [];
             // Use the instagram service and fetch a list of the popular pics
             instagram.fetchMine(function(data){
