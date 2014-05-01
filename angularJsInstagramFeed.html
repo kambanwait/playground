@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Scripted Pixels' Playground. This is where the fun happens!</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/responsivegrid.css">
+    <style>
+        /* setup the very basis for the document */
+        body {
+            text-align:center;
+            font-family:'Helvetica Neue';
+            font-weight: lighter;
+            font-size: 16px;
+            line-height: 1.1;
+            padding: 0 0.5rem;
+            color: #fff;
+            min-width: 320px;
+        }
+            header {
+                margin: 40px 0 0;
+            }
+                header p {
+                    display: inline-block;
+                    text-align: center;
+                    width: 100%;
+                    font-size: 20px;
+                }
+                header h1 {
+                    text-align: center;
+                    width: 100%;
+                    font-size: 30px;
+                    font-size: 3rem;
+                }
+        .container {
+            display: inline-block;
+            position: relative;
+            margin: 1rem auto;
+            display: block;
+            clear: both;
+            width: 100%;
+            max-width: 1024px;
+        }            
+        /* ANIMATION TRANSITION IF NEEDED */
+        .animate {
+            -webkit-transition: all 0.35s ease-in-out;
+            -moz-transition: all 0.35s ease-in-out;
+            -ms-transition: all 0.35s ease-in-out;
+            -o-transition: all 0.35s ease-in-out;
+            transition: all 0.35s ease-in-out;
+        }
+        /*-------------------------
+            The search input
+        --------------------------*/
+
+        .bar{
+            background-color: rgba(255,255,255,0.25);
+            border-radius: 2px;
+            width: 100%;
+            padding: 10px;
+            margin: 45px auto 25px;
+            position:relative;
+            text-align:right;
+            line-height: 1;
+        }
+
+        .bar a{
+            background: 90% center no-repeat;
+            padding: 5px 30px 5px 5px;
+            width:auto;
+            display:inline-block;
+            text-decoration:none !important;
+            margin-right:5px;
+            border-radius:2px;
+            cursor:pointer;
+        }
+
+        .bar a.active,
+        .bar a:hover {
+            background-color: rgba(250,78,6,1); ;
+        }
+
+        .bar a.list-icon{
+            background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYzNkFCQ0ZBMTBCRTExRTM5NDk4RDFEM0E5RkQ1NEZCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYzNkFCQ0ZCMTBCRTExRTM5NDk4RDFEM0E5RkQ1NEZCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjM2QUJDRjgxMEJFMTFFMzk0OThEMUQzQTlGRDU0RkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjM2QUJDRjkxMEJFMTFFMzk0OThEMUQzQTlGRDU0RkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7h1bLqAAAAWUlEQVR42mL8////BwYGBn4GCACxBRlIAIxAA/4jaXoPEkMyjJ+A/g9MDJQBRhYg8RFqMwg8RJIUINYLFDmBUi+ADQAF1n8ofk9yIAy6WPg4GgtDMRYAAgwAdLYwLAoIwPgAAAAASUVORK5CYII=);
+        }
+
+        .bar a.grid-icon{
+            background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBEQkMyQzE0MTBCRjExRTNBMDlGRTYyOTlBNDdCN0I4IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBEQkMyQzE1MTBCRjExRTNBMDlGRTYyOTlBNDdCN0I4Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MERCQzJDMTIxMEJGMTFFM0EwOUZFNjI5OUE0N0I3QjgiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MERCQzJDMTMxMEJGMTFFM0EwOUZFNjI5OUE0N0I3QjgiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4MjPshAAAAXklEQVR42mL4////h/8I8B6IGaCYKHFGEMnAwCDIAAHvgZgRyiZKnImBQsACxB+hNoDAQyQ5osQZIT4gH1DsBZABH6AB8x/JaQzEig++WPiII7Rxio/GwmCIBYAAAwAwVIzMp1R0aQAAAABJRU5ErkJggg==);
+        }
+
+        .bar input{
+            background:#fff no-repeat 13px 13px;
+
+            border: none;
+            width: 100%;
+            line-height: 19px;
+            padding: 11px 0;
+
+            border-radius: 2px;
+            box-shadow: 0 2px 8px #c4c4c4 inset;
+            text-align: left;
+            font-size: 14px;
+            font-family: inherit;
+            color: #738289;
+            font-weight: bold;
+            outline: none;
+            text-indent: 40px;
+        }
+
+        /*-------------------------
+            List layout
+        --------------------------*/
+        ul.list {
+            list-style: none;
+            width: 100%;
+            margin: 0 auto;
+            text-align: left;
+        }
+            ul.list li {
+                border-bottom: rgba(256, 256, 256,0.8) 1px solid;
+                padding: 10px;
+                overflow: hidden;
+                width: 100%;
+            }
+            ul.list li img {
+                width:120px;
+                height:120px;
+                float:left;
+                border:none;
+                margin: 5px 0 10px;
+                z-index: 10;
+            }
+            ul.list li p {
+                margin: 0 0 20px 135px;
+            }
+        /*-------------------------
+            Grid layout
+        --------------------------*/
+        ul.grid{
+            list-style: none;
+            width: 100%;
+            margin: 0 auto;
+            text-align: left;
+        }
+            ul.grid li img {
+                width:100%;
+                height:auto;
+                display:block;
+                border:none;
+                z-index: 10;
+            }
+            ul.grid li p {
+                display: none;
+            }
+        
+        ul.list li.col {
+            margin-left: 0;
+        }
+        ul.grid li.col:nth-child(3n+4){
+            margin-left: 0;
+            clear: both;
+        }
+        ul.list li,
+        ul.grid li {
+            background: none;
+        }
+        ul.list li,
+        ul.grid li {
+            position: relative;
+            margin-bottom: 20px;
+            background: none;
+            padding: 2px;
+            float:left;
+            z-index: 0;
+        }
+            ul.list li a,
+            ul.grid li a {
+                position: relative;
+                display: block;
+                z-index: 1;
+            }
+
+        ul li span {
+            display: block;
+            width: 15px;
+            height: 15px;
+            margin: 0 auto;
+            top: 47%;
+            left: 47%;
+            z-index: 0;
+            position: absolute;
+            border: 2px solid rgba(0,0,0,0.5);
+            border-top-color: transparent;
+            border-radius: 100%;
+                -webkit-animation: spin 1s infinite linear;
+                -moz-animation: spin 1s infinite linear;
+                -ms-animation: spin 1s infinite linear;
+                -o-animation: spin 1s infinite linear;
+                animation: spin 1s infinite linear;
+        }
+            ul.list li span {
+                left: 5%;
+                top: 45%;
+            }
+         
+        ul li span:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: -5px;
+            left: 0px;
+            
+            border: 4px solid transparent;
+            border-bottom-color: rgba(0,0,0,0.5);
+            
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+            @-webkit-keyframes spin {
+                to { -webkit-transform: rotate(360deg); }
+            }
+
+            @-moz-keyframes spin {
+                to { -moz-transform: rotate(360deg); }
+            }
+
+            @-ms-keyframes spin {
+                to { -ms-transform: rotate(360deg); }
+            }
+
+            @-o-keyframes spin {
+                to { -o-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+                to { transform: rotate(360deg); }
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Angular JS : Instagram Feed</h1>
+            <p>Calls in a feed from Instagram and allows you to change the layout.</p>
+        </header>
+
+        <div ng-app="switchableGrid" ng-controller="SwitchableGridController" class="row">
+
+            <div class="bar col span_24" >
+                <!-- These two buttons switch the layout variable, which causes the correct UL to be shown. -->
+                <a class="list-icon animate" 
+                    ng-class="{active: layout == 'list'}"
+                    ng-click="layout = 'list'">list
+                </a>
+
+                <a class="grid-icon animate" 
+                    ng-class="{active: layout == 'grid'}"
+                    ng-click="layout = 'grid'">grid
+                </a>
+            </div>
+            
+            <!-- We have two layouts. We choose which one to show depending on the "layout" binding -->
+            <ul class="{{layout}}">
+                <li ng-repeat="p in pics" class="col span_8">
+                    <span></span>
+                    <a href="{{p.link}}" target="_blank"><img ng-src="{{p.images.low_resolution.url}}" /></a>
+                    <p>{{p.caption.text}}</p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.js"></script>
+
+    <script>
+        // Define a new module. This time we declare a dependency on
+        // the ngResource module, so we can work with the Instagram API
+        var app = angular.module("switchableGrid", ['ngResource']);
+
+        // Create and register the new "instagram" service
+        app.factory('instagram', function($resource){
+
+            return {
+                fetchMine: function(callback){
+                    // The ngResource module gives us the $resource service. It makes working with AJAX easy. Here I am using the client_id of a test app. Replace it with yours.
+
+                    var api = $resource('https://api.instagram.com/v1/users/9892281/media/recent/?client_id=client_id&callback=JSON_CALLBACK',{
+                        client_id: '4ed9563e542d4199ba70e102592ce413'
+                    },{
+                        // This creates an action which we've chosen to name "fetch". It issues an JSONP request to the URL of the resource. JSONP requires that the // callback=JSON_CALLBACK part is added to the URL.
+                        fetch:{
+                            method:'JSONP'
+                        }
+                    });
+
+                    api.fetch(function(response){
+                        // Call the supplied callback function
+                        callback(response.data);
+                    });
+                }
+            }
+
+        });
+        // The controller. Notice that I've included our instagram service which we defined below. It will be available inside the function automatically.
+        function SwitchableGridController($scope, instagram){
+            // Default layout of the app. Clicking the buttons in the toolbar
+            // changes this value.
+            $scope.layout = 'list';
+            $scope.pics = [];
+            // Use the instagram service and fetch a list of the popular pics
+            instagram.fetchMine(function(data){
+                // Assigning the pics array will cause the view
+                // to be automatically redrawn by Angular.
+                $scope.pics = data;
+            });
+        }
+    </script>
+</body>
+</html>
